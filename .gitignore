@@ -2,5 +2,4 @@
 build/*
 test_reports/*
 *.user
-db_access.cnf
-
+db_access.ini

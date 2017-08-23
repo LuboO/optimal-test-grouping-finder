@@ -9,7 +9,7 @@ import shlex
 import subprocess
 from collections import deque
 
-DATABASE_ACCESS_CFG = "db_access.cnf"
+DATABASE_ACCESS_CFG = "db_access.ini"
 CREATE_TABLES_SCRIPT = "create_data_tables.sql"
 
 TEST_SPLIT_TOKEN = " test results:"
