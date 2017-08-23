@@ -1,3 +1,5 @@
-# Ignore build directory and database access config file
+# Custom ignores
 build/*
-db_access.cfg
+test_reports/*
+db_access.cnf
+
