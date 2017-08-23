@@ -1,5 +1,6 @@
 # Custom ignores
 build/*
 test_reports/*
+*.user
 db_access.cnf
 
