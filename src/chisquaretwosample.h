@@ -24,7 +24,6 @@ public:
         std::tie(obsBins, expBins) = calcBins(obs, exp);
 
         using namespace boost::math;
-        std::cout << "Degrees of freedom: " << expBins.size() - 1 << std::endl;
         auto stat = calcChiSquareStat(obsBins, expBins);
         auto pValue = 1 - cdf(chi_squared(expBins.size() - 1), stat);
 
