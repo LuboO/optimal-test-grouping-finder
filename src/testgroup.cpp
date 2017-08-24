@@ -4,9 +4,6 @@
 #include <cmath>
 #include <stdexcept>
 
-const double TestGroup::ALPHA = 0.01;
-const double TestGroup::EPS   = 1e-8;
-
 std::vector<TestGroup> TestGroup::createInitialGroups(const std::vector<AtomicTest> & tests) {
     std::vector<TestGroup> initialGroups;
     initialGroups.reserve(tests.size());
@@ -36,7 +33,7 @@ bool TestGroup::isFail(const std::vector<AtomicTest> & tests, const uint64_t run
         pvalue = tests.at(idx - 1).getResult(runIdx);
         /* Evaluate the p-value here. If any p-value is outside
          * of interval [pAlpha, 1) the group is failing. */
-        if(pvalue < _partialAlpha - EPS || pvalue > 1 - EPS)
+        if(pvalue < _partialAlpha - Constants::EPS || pvalue > 1 - Constants::EPS)
             return true;
     }
 
@@ -53,5 +50,5 @@ double TestGroup::calcPartialAlpha(size_t groupSize) {
     /* Partial alpha is calculated based in the test group */
     /* pAlpha = 1 - (1 - Alpha)^(1 / size) */
     double exponent = 1.0 / (double)groupSize;
-    return 1.0 - (std::pow(1.0 - ALPHA, exponent));
+    return 1.0 - (std::pow(1.0 - Constants::ALPHA, exponent));
 }

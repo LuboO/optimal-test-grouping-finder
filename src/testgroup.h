@@ -6,12 +6,10 @@
 #include <vector>
 
 #include "atomictest.h"
+#include "constants.h"
 
 class TestGroup {
 public:
-    static const double ALPHA;
-    static const double EPS;
-
     TestGroup() = delete;
 
     TestGroup(const uint64_t & atomicTestIdx)

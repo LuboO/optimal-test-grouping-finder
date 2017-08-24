@@ -18,12 +18,20 @@ public:
         return _idx;
     }
 
+    uint64_t getTestId() const{
+        return _testId;
+    }
+
     double getResult(const uint64_t & runIdx) const {
         return _results.at(runIdx - 1);
     }
 
     std::vector<double> getResults() const {
         return _results;
+    }
+
+    uint64_t getRunsCount() const {
+        return _results.size();
     }
 
     void setResults(const std::vector<double> & results) {
