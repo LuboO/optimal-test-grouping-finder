@@ -42,6 +42,10 @@ bool TestGroup::isFail(const std::vector<AtomicTest> & tests, const uint64_t run
     return false;
 }
 
+std::vector<uint64_t> TestGroup::getAtomicTestIndices() const {
+    return _atomicTestIndices;
+}
+
 double TestGroup::calcPartialAlpha(size_t groupSize) {
     /* Sanity check, just in case */
     if(groupSize == 0) {

@@ -36,8 +36,12 @@ public:
                     _obsFailCountFreq, _expFailCountFreq);
     }
 
-    std::vector<double> getFailCountFreq() const {
+    std::vector<double> getObsFailCountFreq() const {
         return _obsFailCountFreq;
+    }
+
+    std::vector<double> getExpFailCountFreq() const {
+        return _expFailCountFreq;
     }
 
     double getStatResult() const {

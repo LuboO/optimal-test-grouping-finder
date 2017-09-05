@@ -27,6 +27,9 @@ public:
 
     bool isFail(const std::vector<AtomicTest> & tests, const uint64_t runIdx) const;
 
+
+    std::vector<uint64_t> getAtomicTestIndices() const;
+
 private:
     double _partialAlpha;
 
