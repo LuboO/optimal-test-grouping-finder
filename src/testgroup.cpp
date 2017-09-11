@@ -10,27 +10,25 @@ std::vector<TestGroup> TestGroup::createInitialGroups(const std::vector<AtomicTe
 
     /* Group with a single atomic test index will be created for each given test */
     for(const auto & test : tests) {
-        initialGroups.push_back({test.getIdx()});
+        initialGroups.push_back({test});
     }
     return initialGroups;
 }
 
 TestGroup TestGroup::merge(const TestGroup & g1, const TestGroup & g2) {
-    /* Merge vectors of indices into single set of unique values */
-    std::set<uint64_t> uniqueIndices;
-    uniqueIndices.insert(g1._atomicTestIndices.begin(), g1._atomicTestIndices.end());
-    uniqueIndices.insert(g2._atomicTestIndices.begin(), g2._atomicTestIndices.end());
+    /* Merge atomic tests into single set of unique test */
+    std::set<AtomicTest> uniqueTests;
+    uniqueTests.insert(g1._atomicTests.begin(), g1._atomicTests.end());
+    uniqueTests.insert(g2._atomicTests.begin(), g2._atomicTests.end());
 
     /* Return brand new test group */
-    return TestGroup({uniqueIndices.begin(), uniqueIndices.end()});
+    return TestGroup({uniqueTests.begin(), uniqueTests.end()});
 }
 
-bool TestGroup::isFail(const std::vector<AtomicTest> & tests, const uint64_t runIdx) const {
+bool TestGroup::isFail(const uint64_t runIdx) const {
     double pvalue;
-    for(const auto & idx : _atomicTestIndices) {
-        /* The tests in the vector are ordered based on the idx.
-         * Test on position n-1 will have idx = n */
-        pvalue = tests.at(idx - 1).getResult(runIdx);
+    for(const auto & test : _atomicTests) {
+        pvalue = test.getResult(runIdx);
         /* Evaluate the p-value here. If any p-value is outside
          * of interval [pAlpha, 1) the group is failing. */
         if(pvalue < _partialAlpha - Constants::EPS || pvalue > 1 - Constants::EPS)
@@ -42,13 +40,15 @@ bool TestGroup::isFail(const std::vector<AtomicTest> & tests, const uint64_t run
     return false;
 }
 
-std::vector<uint64_t> TestGroup::getAtomicTestIndices() const {
-    return _atomicTestIndices;
+void TestGroup::printAtomicIndices() const {
+    for(const auto & test : _atomicTests) {
+        std::cout << test.getIdx() << ", ";
+    }
 }
 
 double TestGroup::calcPartialAlpha(size_t groupSize) {
     /* Sanity check, just in case */
-    if(groupSize == 0) {
+    if(groupSize <= 0) {
         throw std::runtime_error("provided vector must contain at least one element");
     }
     /* Partial alpha is calculated based in the test group */

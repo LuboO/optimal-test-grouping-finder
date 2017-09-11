@@ -30,7 +30,7 @@ public:
             throw std::runtime_error("tests can't be empty");
         }
         _runsCount = tests.front().getRunsCount();
-        _obsFailCountFreq = calcObsFailCountFreq(grouping, tests, _runsCount);
+        _obsFailCountFreq = calcObsFailCountFreq(grouping, _runsCount);
         _expFailCountFreq = calcExpFailCountFreq(grouping.size(), _runsCount);
         std::tie(_statResult, _statPValue) = TTwoSampleTest::calcStatistic(
                     _obsFailCountFreq, _expFailCountFreq);
@@ -69,7 +69,6 @@ private:
 
     static std::vector<double> calcObsFailCountFreq(
             const std::vector<TestGroup> & grouping,
-            const std::vector<AtomicTest> & tests,
             uint64_t runsCount){
         /* Each group can fail at most once. So failure count (n) will
          * be 0 <= n <= grouping.size */
@@ -81,7 +80,7 @@ private:
         for(uint64_t runIdx = 1; runIdx <= runsCount; ++runIdx) {
             failCount = 0;
             for(const auto & group : grouping) {
-                if(group.isFail(tests, runIdx)) {
+                if(group.isFail(runIdx)) {
                     ++failCount;
                 }
             }

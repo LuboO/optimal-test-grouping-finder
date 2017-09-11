@@ -58,11 +58,10 @@ std::vector<TestGroup> findOptimalPairing(const std::vector<TestGroup> & groupin
 }
 
 void printGrouping(const std::vector<TestGroup> & grouping) {
+    /* This will print more information about the tests... */
     for(const auto & group : grouping) {
         std::cout << "{";
-        for(const auto & idx : group.getAtomicTestIndices()) {
-            std::cout << idx << ", ";
-        }
+        group.printAtomicIndices();
         std::cout << "}" << std::endl;
     }
     std::cout << std::endl;
@@ -93,6 +92,7 @@ int main() try {
     }
     FitnessEval finalStatistic = FitnessEval(finalGrouping, tests);
 
+    /* Outputting final information */
     std::cout << "Achieved fitness:     " << finalStatistic.getFitness() << std::endl;
     std::cout << "Chi-square statistic: " << finalStatistic.getStatResult() << std::endl;
     std::cout << "Grouping size:        " << finalGrouping.size() << std::endl;

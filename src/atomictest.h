@@ -38,6 +38,10 @@ public:
         _results = results;
     }
 
+    friend bool operator<(const AtomicTest & a, const AtomicTest & b) {
+        return a._idx < b._idx;
+    }
+
 private:
     uint64_t _idx;
     uint64_t _testId;

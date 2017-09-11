@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <inttypes.h>
 #include <vector>
+#include <iostream>
 
 #include "atomictest.h"
 #include "constants.h"
@@ -12,28 +13,27 @@ class TestGroup {
 public:
     TestGroup() = delete;
 
-    TestGroup(const uint64_t & atomicTestIdx)
-        : TestGroup(std::vector<uint64_t>({atomicTestIdx}))
+    TestGroup(const AtomicTest & atomicTest)
+        : TestGroup(std::vector<AtomicTest>({atomicTest}))
     {}
 
-    TestGroup(const std::vector<uint64_t> & atomicTestIndices)
-        :_partialAlpha(calcPartialAlpha(atomicTestIndices.size())),
-         _atomicTestIndices(atomicTestIndices)
+    TestGroup(const std::vector<AtomicTest> & atomicTests)
+        : _partialAlpha(calcPartialAlpha(atomicTests.size())),
+          _atomicTests(atomicTests)
     {}
 
     static std::vector<TestGroup> createInitialGroups(const std::vector<AtomicTest> & tests);
 
     static TestGroup merge(const TestGroup & g1, const TestGroup & g2);
 
-    bool isFail(const std::vector<AtomicTest> & tests, const uint64_t runIdx) const;
+    bool isFail(const uint64_t runIdx) const;
 
-
-    std::vector<uint64_t> getAtomicTestIndices() const;
+    void printAtomicIndices() const;
 
 private:
     double _partialAlpha;
 
-    std::vector<uint64_t> _atomicTestIndices;
+    std::vector<AtomicTest> _atomicTests;
 
     static double calcPartialAlpha(size_t groupSize);
 };
