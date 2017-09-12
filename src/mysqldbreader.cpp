@@ -6,7 +6,8 @@
 #include <cppconn/connection.h>
 #include <cppconn/prepared_statement.h>
 
-std::vector<AtomicTest> MySQLDbReader::getDataEntries() const {
+//std::vector<AtomicTest> MySQLDbReader::getDataEntries() const {
+AtomicTestList MySQLDbReader::getDataEntries() const {
     /* Preparing database connection */
     auto driver = get_driver_instance();
     auto con = std::unique_ptr<sql::Connection>(
@@ -51,5 +52,5 @@ std::vector<AtomicTest> MySQLDbReader::getDataEntries() const {
         }
         test.setResults(std::move(res));
     }
-    return tests;
+    return AtomicTestList(tests);
 }

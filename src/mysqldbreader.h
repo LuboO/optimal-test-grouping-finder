@@ -29,7 +29,8 @@ public:
         _passwd = t.get<std::string>("Database.Password");
     }
 
-    std::vector<AtomicTest> getDataEntries() const;
+    //std::vector<AtomicTest> getDataEntries() const;
+    AtomicTestList getDataEntries() const;
 
 private:
     std::string _name;

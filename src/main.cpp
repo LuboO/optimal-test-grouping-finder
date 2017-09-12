@@ -34,10 +34,11 @@ std::vector<TestGroup> mergeGroupsAtIndices(const std::vector<TestGroup> & group
 
 typedef FailCountFreqEval<ChiSquareTwoSample> FitnessEval;
 
-std::vector<TestGroup> findOptimalPairing(const std::vector<TestGroup> & grouping,
-                                          const std::vector<AtomicTest> & tests) {
+std::vector<TestGroup> findOptimalPairing(const std::vector<TestGroup> & grouping) {
+    /* optGrouping is set to original grouping at the beginning and changed only
+     * if the new tried grouping has better fitness. If not, original grouping is returned. */
     auto optGrouping = grouping;
-    auto optFitness = FitnessEval(grouping, tests).getFitness();
+    auto optFitness = FitnessEval(grouping).getFitness();
 
     std::vector<TestGroup> currGrouping;
     double currFitness;
@@ -46,7 +47,7 @@ std::vector<TestGroup> findOptimalPairing(const std::vector<TestGroup> & groupin
     for(size_t idxA = 0; idxA < grouping.size(); ++idxA) {
         for(size_t idxB = idxA + 1; idxB < grouping.size(); ++idxB) {
             currGrouping = mergeGroupsAtIndices(grouping, idxA, idxB);
-            currFitness = FitnessEval(currGrouping, tests).getFitness();
+            currFitness = FitnessEval(currGrouping).getFitness();
             if(currFitness > optFitness) {
                 optGrouping = std::move(currGrouping);
                 optFitness = currFitness;
@@ -57,18 +58,14 @@ std::vector<TestGroup> findOptimalPairing(const std::vector<TestGroup> & groupin
     return optGrouping;
 }
 
-void printGrouping(const std::vector<TestGroup> & grouping) {
-    /* This will print more information about the tests... */
-    for(const auto & group : grouping) {
-        std::cout << "{";
-        group.printAtomicIndices();
-        std::cout << "}" << std::endl;
+int main(int argc, char * argv[]) try {
+    if(argc != 2) {
+        std::cout << "[USAGE] " << argv[0] << " <database-ini-file>" << std::endl;
+        return 1;
     }
-    std::cout << std::endl;
-}
 
-int main() try {
-    MySQLDbReader reader("db_access.ini");
+    /* Loading tests into memory. */
+    MySQLDbReader reader(argv[1]);
     auto tests = reader.getDataEntries();
 
     /* This is our starting point in looking for the best fitness. */
@@ -80,22 +77,25 @@ int main() try {
     for(;;) {
         ++ctr;
         finalGroupingSize = finalGrouping.size();
-        finalGrouping = findOptimalPairing(finalGrouping, tests);
+        finalGrouping = findOptimalPairing(finalGrouping);
         std::cout << "Optimal fitness after " << ctr << " pairing(s): "
-                  << FitnessEval(finalGrouping, tests).getFitness() << std::endl;
+                  << FitnessEval(finalGrouping).getFitness() << std::endl;
 
+        /* This is the ending condition. Size of the grouping didn't change,
+         * therefore no better grouping was found by pairing any two groups.
+         * At this point, the algorithm ends and results are printed. */
         if(finalGrouping.size() == finalGroupingSize) {
-            /* This is end condition. The fitness already achieved by finalGrouping
-             * can not be improved by grouping any two test groups. */
             break;
         }
     }
-    FitnessEval finalStatistic = FitnessEval(finalGrouping, tests);
+    FitnessEval finalStatistic = FitnessEval(finalGrouping);
 
     /* Outputting final information */
+    std::cout << std::endl;
     std::cout << "Achieved fitness:     " << finalStatistic.getFitness() << std::endl;
     std::cout << "Chi-square statistic: " << finalStatistic.getStatResult() << std::endl;
-    std::cout << "Grouping size:        " << finalGrouping.size() << std::endl;
+    std::cout << "Grouping size:        " << finalGrouping.size() << std::endl << std::endl;
+
     std::cout << "===== Expected failure frequency =====" << std::endl;
     for(const auto & v : finalStatistic.getExpFailCountFreq()) {
         std::cout << v << ", ";
@@ -105,12 +105,17 @@ int main() try {
     for(const auto & v : finalStatistic.getObsFailCountFreq()) {
         std::cout << v << ", ";
     }
-    std::cout << std::endl;
+    std::cout << std::endl << std::endl;
 
-    std::cout << "===== Final grouping of atomic test indices =====" << std::endl;
-    printGrouping(finalGrouping);
+    std::cout << "===================================" << std::endl;
+    std::cout << "===== Final grouping of tests =====" << std::endl;
+    std::cout << "===================================" << std::endl;
+    for(const auto & group : finalGrouping) {
+        group.printGroup(std::cout);
+    }
 
     return 0; // exit
+
 } catch(std::exception & ex) {
     std::cout << "[ERROR] " << ex.what() << std::endl;
 }

@@ -13,27 +13,34 @@ class TestGroup {
 public:
     TestGroup() = delete;
 
-    TestGroup(const AtomicTest & atomicTest)
-        : TestGroup(std::vector<AtomicTest>({atomicTest}))
+    TestGroup(const uint64_t & atomicTestIdx,
+              const AtomicTestList & atomicTestList)
+        : TestGroup(std::vector<uint64_t>({atomicTestIdx}), atomicTestList)
     {}
 
-    TestGroup(const std::vector<AtomicTest> & atomicTests)
-        : _partialAlpha(calcPartialAlpha(atomicTests.size())),
-          _atomicTests(atomicTests)
+    TestGroup(const std::vector<uint64_t> & atomicTestIndices,
+              const AtomicTestList & atomicTestList)
+        : _partialAlpha(calcPartialAlpha(atomicTestIndices.size())),
+          _atomicTestIndices(atomicTestIndices),
+          _atomicTestList(&atomicTestList)
     {}
 
-    static std::vector<TestGroup> createInitialGroups(const std::vector<AtomicTest> & tests);
+    static std::vector<TestGroup> createInitialGroups(const AtomicTestList & tests);
 
     static TestGroup merge(const TestGroup & g1, const TestGroup & g2);
 
+    size_t getRunsCount() const;
+
     bool isFail(const uint64_t runIdx) const;
 
-    void printAtomicIndices() const;
+    void printGroup(std::ostream & out) const;
 
 private:
     double _partialAlpha;
 
-    std::vector<AtomicTest> _atomicTests;
+    std::vector<uint64_t> _atomicTestIndices;
+
+    const AtomicTestList * _atomicTestList;
 
     static double calcPartialAlpha(size_t groupSize);
 };

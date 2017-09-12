@@ -21,15 +21,11 @@ public:
     FailCountFreqEval() = delete;
 
     FailCountFreqEval<TTwoSampleTest>(
-            const std::vector<TestGroup> & grouping,
-            const std::vector<AtomicTest> & tests) {
+            const std::vector<TestGroup> & grouping) {
         if(grouping.empty()) {
             throw std::runtime_error("grouping can't be empty");
         }
-        if(tests.empty()) {
-            throw std::runtime_error("tests can't be empty");
-        }
-        _runsCount = tests.front().getRunsCount();
+        _runsCount = grouping.front().getRunsCount();
         _obsFailCountFreq = calcObsFailCountFreq(grouping, _runsCount);
         _expFailCountFreq = calcExpFailCountFreq(grouping.size(), _runsCount);
         std::tie(_statResult, _statPValue) = TTwoSampleTest::calcStatistic(
@@ -74,8 +70,6 @@ private:
          * be 0 <= n <= grouping.size */
         std::vector<double> failCountFreq(grouping.size() + 1, 0.0);
 
-        /* All tests  in groupings have same count of runs in them -
-         * so take the count from the first one. */
         int failCount;
         for(uint64_t runIdx = 1; runIdx <= runsCount; ++runIdx) {
             failCount = 0;
