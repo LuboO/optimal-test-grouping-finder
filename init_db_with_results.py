@@ -13,8 +13,8 @@ DATABASE_ACCESS_CFG = "db_access.ini"
 CREATE_TABLES_SCRIPT = "create_data_tables.sql"
 
 TEST_SPLIT_TOKEN = " test results:"
-VARIANT_SPLIT_TOKEN = "Variant \d+?:"
-SUBTEST_SPLIT_TOKEN = "Subtest \d+?:"
+VARIANT_SPLIT_TOKEN = r'Variant \d+?:'
+SUBTEST_SPLIT_TOKEN = r'Subtest \d+?:'
 P_VALUE_RE = re.compile(r"statistic p-value: ([^\s]+)")
 
 # Map for translating of test index to test id as used in RTT.
@@ -152,7 +152,7 @@ def main():
                 # test_id = TEST_IDX_TO_ID_DH[test_idx]
                 test_id = test_idx
                 # Getting separate variants from test
-                variants = deque(test.split(VARIANT_SPLIT_TOKEN))
+                variants = deque(re.split(VARIANT_SPLIT_TOKEN, test))
                 if len(variants) > 1:
                     variants.popleft()
 
@@ -160,7 +160,7 @@ def main():
                 for variant in variants:
                     variant_idx += 1
                     # Getting separate subtests from variant
-                    subtests = deque(variant.split(SUBTEST_SPLIT_TOKEN))
+                    subtests = deque(re.split(SUBTEST_SPLIT_TOKEN, variant))
                     if len(subtests) > 1:
                         subtests.popleft()
 
