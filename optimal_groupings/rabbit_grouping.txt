@@ -1,0 +1,179 @@
+Optimal fitness after 1 pairing(s): 0.00441965
+Optimal fitness after 2 pairing(s): 0.0457289
+Optimal fitness after 3 pairing(s): 0.246284
+Optimal fitness after 4 pairing(s): 0.473479
+Optimal fitness after 5 pairing(s): 0.656977
+Optimal fitness after 6 pairing(s): 0.810273
+Optimal fitness after 7 pairing(s): 0.974425
+Optimal fitness after 8 pairing(s): 0.998605
+Optimal fitness after 9 pairing(s): 0.999958
+Optimal fitness after 10 pairing(s): 0.999958
+
+Achieved fitness:     0.999958
+Chi-square statistic: 0.00293751
+Grouping size:        49
+
+===== Expected failure frequency =====
+611.117, 302.472, 73.3266, 11.6039, 1.34792, 0.122539, 0.00907693, 0.000563215, 2.98675e-05, 1.37437e-06, 5.55302e-08, 1.98869e-09, 6.36111e-11, 1.82876e-12, 4.75002e-14, 1.11953e-15, 2.40304e-17, 4.71184e-19, 8.46122e-21, 1.39446e-22, 2.11282e-24, 2.94717e-26, 3.78884e-28, 4.49269e-30, 4.91624e-32, 4.9659e-34, 4.63021e-36, 3.9841e-38, 3.16198e-40, 2.31284e-42, 1.55747e-44, 9.64219e-47, 5.47852e-49, 2.85077e-51, 1.35509e-53, 5.8662e-56, 2.30434e-58, 8.17812e-61, 2.60865e-63, 7.43205e-66, 1.87678e-68, 4.16138e-71, 8.0065e-74, 1.31655e-76, 1.81343e-79, 2.03527e-82, 1.78768e-85, 1.1526e-88, 4.851e-92, 1e-95, 
+===== Observed failure frequency =====
+611, 303, 73, 12, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+
+===================================
+===== Final grouping of tests =====
+===================================
+{
+	Atomic IDX: 1; Test ID: 1; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 1
+	Atomic IDX: 29; Test ID: 13; Variant IDX: 2; Subtest IDX: 1; Statistic IDX: 3
+	Atomic IDX: 31; Test ID: 13; Variant IDX: 2; Subtest IDX: 1; Statistic IDX: 5
+	Atomic IDX: 33; Test ID: 14; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 2
+	Atomic IDX: 34; Test ID: 14; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 3
+	Atomic IDX: 35; Test ID: 14; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 4
+	Atomic IDX: 54; Test ID: 16; Variant IDX: 3; Subtest IDX: 1; Statistic IDX: 1
+},
+{
+	Atomic IDX: 2; Test ID: 2; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 1
+},
+{
+	Atomic IDX: 3; Test ID: 2; Variant IDX: 2; Subtest IDX: 1; Statistic IDX: 1
+},
+{
+	Atomic IDX: 4; Test ID: 3; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 1
+	Atomic IDX: 5; Test ID: 4; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 1
+},
+{
+	Atomic IDX: 6; Test ID: 4; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 2
+},
+{
+	Atomic IDX: 7; Test ID: 5; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 1
+},
+{
+	Atomic IDX: 8; Test ID: 6; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 1
+},
+{
+	Atomic IDX: 9; Test ID: 7; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 1
+},
+{
+	Atomic IDX: 10; Test ID: 7; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 2
+},
+{
+	Atomic IDX: 11; Test ID: 7; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 3
+},
+{
+	Atomic IDX: 12; Test ID: 8; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 1
+},
+{
+	Atomic IDX: 13; Test ID: 8; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 2
+	Atomic IDX: 18; Test ID: 11; Variant IDX: 3; Subtest IDX: 1; Statistic IDX: 1
+},
+{
+	Atomic IDX: 14; Test ID: 9; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 1
+},
+{
+	Atomic IDX: 15; Test ID: 10; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 1
+},
+{
+	Atomic IDX: 16; Test ID: 11; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 1
+},
+{
+	Atomic IDX: 17; Test ID: 11; Variant IDX: 2; Subtest IDX: 1; Statistic IDX: 1
+},
+{
+	Atomic IDX: 19; Test ID: 12; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 1
+},
+{
+	Atomic IDX: 20; Test ID: 12; Variant IDX: 2; Subtest IDX: 1; Statistic IDX: 1
+},
+{
+	Atomic IDX: 21; Test ID: 12; Variant IDX: 3; Subtest IDX: 1; Statistic IDX: 1
+},
+{
+	Atomic IDX: 22; Test ID: 13; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 1
+},
+{
+	Atomic IDX: 23; Test ID: 13; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 2
+},
+{
+	Atomic IDX: 24; Test ID: 13; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 3
+},
+{
+	Atomic IDX: 25; Test ID: 13; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 4
+},
+{
+	Atomic IDX: 26; Test ID: 13; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 5
+},
+{
+	Atomic IDX: 27; Test ID: 13; Variant IDX: 2; Subtest IDX: 1; Statistic IDX: 1
+},
+{
+	Atomic IDX: 28; Test ID: 13; Variant IDX: 2; Subtest IDX: 1; Statistic IDX: 2
+},
+{
+	Atomic IDX: 30; Test ID: 13; Variant IDX: 2; Subtest IDX: 1; Statistic IDX: 4
+},
+{
+	Atomic IDX: 32; Test ID: 14; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 1
+},
+{
+	Atomic IDX: 36; Test ID: 14; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 5
+},
+{
+	Atomic IDX: 37; Test ID: 14; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 6
+},
+{
+	Atomic IDX: 38; Test ID: 14; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 7
+},
+{
+	Atomic IDX: 39; Test ID: 14; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 8
+},
+{
+	Atomic IDX: 40; Test ID: 14; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 9
+},
+{
+	Atomic IDX: 41; Test ID: 15; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 1
+},
+{
+	Atomic IDX: 42; Test ID: 15; Variant IDX: 2; Subtest IDX: 1; Statistic IDX: 1
+},
+{
+	Atomic IDX: 43; Test ID: 15; Variant IDX: 3; Subtest IDX: 1; Statistic IDX: 1
+},
+{
+	Atomic IDX: 44; Test ID: 16; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 1
+	Atomic IDX: 56; Test ID: 16; Variant IDX: 3; Subtest IDX: 1; Statistic IDX: 3
+},
+{
+	Atomic IDX: 45; Test ID: 16; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 2
+},
+{
+	Atomic IDX: 46; Test ID: 16; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 3
+},
+{
+	Atomic IDX: 47; Test ID: 16; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 4
+},
+{
+	Atomic IDX: 48; Test ID: 16; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 5
+},
+{
+	Atomic IDX: 49; Test ID: 16; Variant IDX: 2; Subtest IDX: 1; Statistic IDX: 1
+},
+{
+	Atomic IDX: 50; Test ID: 16; Variant IDX: 2; Subtest IDX: 1; Statistic IDX: 2
+},
+{
+	Atomic IDX: 51; Test ID: 16; Variant IDX: 2; Subtest IDX: 1; Statistic IDX: 3
+},
+{
+	Atomic IDX: 52; Test ID: 16; Variant IDX: 2; Subtest IDX: 1; Statistic IDX: 4
+},
+{
+	Atomic IDX: 53; Test ID: 16; Variant IDX: 2; Subtest IDX: 1; Statistic IDX: 5
+},
+{
+	Atomic IDX: 55; Test ID: 16; Variant IDX: 3; Subtest IDX: 1; Statistic IDX: 2
+},
+{
+	Atomic IDX: 57; Test ID: 16; Variant IDX: 3; Subtest IDX: 1; Statistic IDX: 4
+},
+{
+	Atomic IDX: 58; Test ID: 16; Variant IDX: 3; Subtest IDX: 1; Statistic IDX: 5
+},

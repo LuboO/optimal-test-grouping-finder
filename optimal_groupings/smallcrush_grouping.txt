@@ -1,0 +1,56 @@
+Optimal fitness after 1 pairing(s): 0.986642
+Optimal fitness after 2 pairing(s): 0.995376
+Optimal fitness after 3 pairing(s): 0.996423
+Optimal fitness after 4 pairing(s): 0.996423
+
+Achieved fitness:     0.996423
+Chi-square statistic: 0.00716737
+Grouping size:        12
+
+===== Expected failure frequency =====
+886.385, 107.441, 5.96892, 0.200974, 0.00456759, 7.38196e-05, 8.69928e-07, 7.53184e-09, 4.75495e-11, 2.13466e-13, 6.46866e-16, 1.188e-18, 1e-21, 
+===== Observed failure frequency =====
+887, 107, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+
+===================================
+===== Final grouping of tests =====
+===================================
+{
+	Atomic IDX: 1; Test ID: 1; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 1
+},
+{
+	Atomic IDX: 2; Test ID: 2; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 1
+	Atomic IDX: 3; Test ID: 3; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 1
+	Atomic IDX: 5; Test ID: 5; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 1
+},
+{
+	Atomic IDX: 4; Test ID: 4; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 1
+	Atomic IDX: 13; Test ID: 10; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 3
+},
+{
+	Atomic IDX: 6; Test ID: 6; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 1
+},
+{
+	Atomic IDX: 7; Test ID: 6; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 2
+},
+{
+	Atomic IDX: 8; Test ID: 7; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 1
+},
+{
+	Atomic IDX: 9; Test ID: 8; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 1
+},
+{
+	Atomic IDX: 10; Test ID: 9; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 1
+},
+{
+	Atomic IDX: 11; Test ID: 10; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 1
+},
+{
+	Atomic IDX: 12; Test ID: 10; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 2
+},
+{
+	Atomic IDX: 14; Test ID: 10; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 4
+},
+{
+	Atomic IDX: 15; Test ID: 10; Variant IDX: 1; Subtest IDX: 1; Statistic IDX: 5
+},
