@@ -13,8 +13,8 @@ DATABASE_ACCESS_CFG = "db_access.ini"
 CREATE_TABLES_SCRIPT = "create_data_tables.sql"
 
 TEST_SPLIT_TOKEN = " test results:"
-VARIANT_SPLIT_TOKEN = "Variant "
-SUBTEST_SPLIT_TOKEN = "Subtest "
+VARIANT_SPLIT_TOKEN = "Variant \d+?:"
+SUBTEST_SPLIT_TOKEN = "Subtest \d+?:"
 P_VALUE_RE = re.compile(r"statistic p-value: ([^\s]+)")
 
 # Map for translating of test index to test id as used in RTT.
@@ -148,7 +148,9 @@ def main():
             atomic_test_idx = 0
             for test in tests:
                 test_idx += 1
-                test_id = TEST_IDX_TO_ID_DH[test_idx]
+                # Other batteries doesn't need idx->id translation
+                # test_id = TEST_IDX_TO_ID_DH[test_idx]
+                test_id = test_idx
                 # Getting separate variants from test
                 variants = deque(test.split(VARIANT_SPLIT_TOKEN))
                 if len(variants) > 1:

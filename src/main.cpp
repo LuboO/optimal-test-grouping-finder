@@ -58,14 +58,9 @@ std::vector<TestGroup> findOptimalPairing(const std::vector<TestGroup> & groupin
     return optGrouping;
 }
 
-int main(int argc, char * argv[]) try {
-    if(argc != 2) {
-        std::cout << "[USAGE] " << argv[0] << " <database-ini-file>" << std::endl;
-        return 1;
-    }
-
+int main() try {
     /* Loading tests into memory. */
-    MySQLDbReader reader(argv[1]);
+    MySQLDbReader reader("db_access.ini");
     auto tests = reader.getDataEntries();
 
     /* This is our starting point in looking for the best fitness. */

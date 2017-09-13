@@ -2,4 +2,4 @@
 build/*
 test_reports/*
 *.user
-*_db_access.ini
+*.ini
